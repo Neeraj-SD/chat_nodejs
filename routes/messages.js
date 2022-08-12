@@ -1,9 +1,9 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
-const validObjectId = require('../../middlewares/validObjectId');
-const { User } = require('../../models/user');
-const { UserMessage, validate } = require('../../models/user/user-message');
-const { publishMessage } = require('../../startup/redis-client');
+const auth = require('../middlewares/auth');
+const validObjectId = require('../middlewares/validObjectId');
+const { User } = require('../models/user');
+const { UserMessage, validate } = require('../models/user/user-message');
+const { publishMessage } = require('../startup/redis-client');
 const router = express.Router();
 
 const sendRedisMessage = async (message, user) => {
