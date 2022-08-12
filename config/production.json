@@ -1,0 +1,9 @@
+{
+    "dbConnectionString":"mongodb+srv://<username>:<password>@cluster0.yxgwh.mongodb.net/Onlive?retryWrites=true&w=majority",
+    "mongoPass":{
+        "username":"",
+        "password":""
+    },
+    "jwtPrivateKey":""
+
+}

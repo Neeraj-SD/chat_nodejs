@@ -1,0 +1,42 @@
+{
+  "name": "chat-nodejs",
+  "version": "1.0.0",
+  "description": "backend sever application for onlive",
+  "main": "app.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rennovex/onlive-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rennovex/onlive-nodejs/issues"
+  },
+  "homepage": "https://github.com/rennovex/onlive-nodejs#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "express": "^4.17.2",
+    "firebase": "^9.6.10",
+    "firebase-admin": "^10.0.2",
+    "google-auth-library": "^7.11.0",
+    "helmet": "^5.0.2",
+    "joi": "^17.6.0",
+    "joi-objectid": "^4.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.1.8",
+    "nodemon": "^2.0.15",
+    "redis": "^4.0.2",
+    "uuid": "^8.3.2"
+  }
+}
