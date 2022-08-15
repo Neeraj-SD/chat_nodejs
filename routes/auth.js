@@ -6,27 +6,39 @@ const { validate, User } = require('../models/user');
 const { UserAvatar } = require('../models/user/user-avatar');
 const bcrypt = require('bcryptjs/dist/bcrypt');
 
-router.post('/register', o_auth, async (req, res) => {
-    const { error, value } = validate(req.body);
-    if (error) return res.status(400).send(error);
+// router.post('/register', o_auth, async (req, res) => {
+//     // const { error, value } = validate(req.body);
+//     // if (error) return res.status(400).send(error);
 
-    if (value.domain === "campus") {
-        const campus = await Campus.findById(value.campus);
-        if (!campus) return res.status(404).send('Campus not found');
-    }
+//     const user = new User({
+//         google_uid: req.userid,
+//         email: req.email,
+//         name: req.name,
+//         picture: req.picture,
+//     })
 
-    const avatar = await UserAvatar.findById(value.avatar);
-    if (!avatar) return res.status(404).send('Avatar not found');
+//     await user.save()
 
-    for (const interestId of value.interests) {
-        const interest = await Interest.findById(interestId);
-        if (!interest) return res.status(404).send("Interest not found " + interestId);
-    }
+//     const salt = await bcrypt.genSalt(10);
+//     const hashed_google_uid = await bcrypt.hash(req.userid, salt);
+//     await user.updateOne({ google_uid: hashed_google_uid })
+//     const result = await user.save()
 
-    const user = new User({
-        ...value,
+//     res.header('x-auth-token', result.generateAuthToken()).status(201).send(await result.getAnonymousUser())
+// });
+
+router.post('/google', o_auth, async (req, res) => {
+    // const { error, value } = validate(req.body);
+    // if (error) return res.status(400).send(error);
+
+    let user = await User.findOne({ email: req.email });
+    if (user) return res.header().status(200).send(await user.getAnonymousUser())
+
+    user = new User({
         google_uid: req.userid,
-        email: req.email
+        email: req.email,
+        name: req.name,
+        picture: req.picture,
     })
 
     await user.save()

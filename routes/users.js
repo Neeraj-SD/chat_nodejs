@@ -12,12 +12,17 @@ const validObjectId = require('../middlewares/validObjectId');
 router.get('/', auth, async (req, res) => {
     const user = await User
         .findById(req.user.id)
-        .populate('interests avatar campus');
-    if (!user) res.status(404).send('User not found');
+
+    if (!user) return res.status(404).send('User not found');
 
     res.status(200).send(await user.getAnonymousUser())
 
 });
+
+router.get('/all', [auth,], async (req, res) => {
+    const users = await User.find()
+    res.send(users)
+})
 
 router.get('/:id', [auth, validObjectId('id')], async (req, res) => {
     const id = req.params.id;
