@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rennovex/onlive-nodejs.git"
+    "url": "git+https://github.com/Neeraj-SD/chat_nodejs.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rennovex/onlive-nodejs/issues"
+    "url": "https://github.com/Neeraj-SD/chat_nodejs/issues"
   },
-  "homepage": "https://github.com/rennovex/onlive-nodejs#readme",
+  "homepage": "https://github.com/Neeraj-SD/chat_nodejs#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.7",
