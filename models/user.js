@@ -26,6 +26,7 @@ const userSchema = mongoose.Schema({
     // //TODO:Add validator, if domain == campus, required
     // campus:{ type:mongoose.Schema.Types.ObjectId, ref:'Campus'},
     timeStamp: { type: Date, default: Date.now },
+    fcmToken: { type: String, default: '', minlength: 3, maxlength: 500 },
     // isAdmin: { type: Boolean, default: false },
     // isBusiness: { type: Boolean, default: false },
     google_uid: { type: String, minlength: 3, maxlength: 100, required: true }
@@ -57,6 +58,16 @@ User.prototype.generateAuthToken = function () {
 User.prototype.getSafeUser = async function () {
     await this.populate('interests avatar campus');
     return _.get(this, 'name nickName gender domain campus interests avatar email age'.split())
+}
+
+User.prototype.getUserWithoutToken = async function () {
+    // await this.populate('interests avatar')
+    return {
+        _id: this.id,
+        name: this.name,
+        email: this.email,
+        picture: this.picture,
+    }
 }
 
 User.prototype.getAnonymousUser = async function () {

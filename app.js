@@ -1,7 +1,7 @@
 const express = require('express');
 const config = require('config')
 const app = express();
-app.use(express.json());  
+app.use(express.json());
 
 require('./startup/routes')(app);
 require('./startup/db')();
@@ -16,6 +16,6 @@ if (!config.get('jwtPrivateKey')) {
 
 const PORT = process.env.PORT || 3001;
 
-const server = app.listen(PORT, ()=> console.log("Listening on port "+PORT));
+const server = app.listen(PORT, () => console.log("Listening on port " + PORT));
 
 module.exports = server;

@@ -19,8 +19,23 @@ router.get('/', auth, async (req, res) => {
 
 });
 
+router.post('/fcmToken', auth, async (req, res) => {
+    const user = await User
+        .findById(req.user.id)
+
+    if (!user) return res.status(404).send('User not found');
+
+    if (!req.body.fcmToken || req.body.fcmToken.length < 3) return res.status(400).send('Send a valid fcm token.')
+
+    user.fcmToken = req.body.fcmToken
+    await user.save()
+
+    return res.status(200).send(user.fcmToken)
+
+});
+
 router.get('/all', [auth,], async (req, res) => {
-    const users = await User.find()
+    const users = await User.find().select('-google_uid')
     res.send(users)
 })
 
