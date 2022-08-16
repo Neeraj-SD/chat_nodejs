@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     // //TODO:Add validator, if domain == campus, required
     // campus:{ type:mongoose.Schema.Types.ObjectId, ref:'Campus'},
     timeStamp: { type: Date, default: Date.now },
-    fcmToken: { type: String, default: '', minlength: 3, maxlength: 500 },
+    fcmToken: { type: String, default: '', maxlength: 500 },
     // isAdmin: { type: Boolean, default: false },
     // isBusiness: { type: Boolean, default: false },
     google_uid: { type: String, minlength: 3, maxlength: 100, required: true }
