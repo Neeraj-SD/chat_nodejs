@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Neeraj-SD/chat_nodejs#readme",
   "dependencies": {
+    "@socket.io/admin-ui": "^0.4.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.7",
     "express": "^4.17.2",
@@ -37,6 +38,7 @@
     "mongoose": "^6.1.8",
     "nodemon": "^2.0.15",
     "redis": "^4.0.2",
+    "socket.io": "^4.5.2",
     "uuid": "^8.3.2"
   }
 }

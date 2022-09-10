@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
     //     required:true,
     //     enum:['male','female','lgbtq'],
     // },
+    socket_id: { type: String, minlength: 3, maxlength: 255, default: 'default' },
     email: { type: String, required: true, minlength: 3, maxlength: 255, unique: true },
     // domain:{ 
     //     type:String,
