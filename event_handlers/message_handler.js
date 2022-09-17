@@ -20,6 +20,7 @@ const sendNotification = async (message, user) => {
 
         const payload = {
             notification: {
+                channel_id: "CHAT_MESSAGES",
                 body: message.body,
                 title: "Custom sound slow_spring_board.mp3",
                 sound: "slow_spring_board.mp3"
