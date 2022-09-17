@@ -5,7 +5,6 @@ const admin = require('../startup/firebase-configuration')
 
 
 //! FCM SEND MESSAGE
-//
 const sendNotification = async (message, user) => {
     try {
         const registrationToken = user.fcmToken;
