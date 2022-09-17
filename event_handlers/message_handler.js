@@ -19,8 +19,6 @@ const sendNotification = async (message, user) => {
         // };
 
         const payload = {
-            collapse_key: "type_a",
-            priority: "high",
             notification: {
                 body: message.body,
                 title: "Custom sound slow_spring_board.mp3",
