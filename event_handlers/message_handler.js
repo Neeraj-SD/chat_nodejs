@@ -12,11 +12,21 @@ const sendNotification = async (message, user) => {
         // const registrationToken = 'dM7UYYN4Ro-3SP_rDy71wD:APA91bHEYSFyLB_hlbA70XGT0y-iuvHA7eY4nDyeA7KL0Y0m_JbbySwuYom02tbLU9H_wHYxH4r0qBNKpcb4_VwlHz6Cli8_soIfs7AAd1XAllozmCQwct5KQZyTa35AdHjY6Mm9kiry';
 
 
+        // const payload = {
+        //     notification: {
+        //         body: message.body
+        //     }
+        // };
+
         const payload = {
+            collapse_key: "type_a",
+            priority: "high",
             notification: {
-                body: message.body
+                body: message.body,
+                title: "Custom sound slow_spring_board.mp3",
+                sound: "slow_spring_board.mp3"
             }
-        };
+        }
 
         admin.messaging().sendToDevice(registrationToken, payload)
             .then((response) => {
@@ -62,16 +72,10 @@ module.exports = (io, socket) => {
     }
 
     const unread = async (_, callback) => {
-        const chats = await Message.find({ _to: socket.user.id }).all()
-
-        console.log(chats.length)
-
+        const chats = await Message.find({ _to: socket.user.id })
         const user = await User.findById(socket.user.id)
-        console.log('chat:unread' + user.email + chats);
 
-        chats.map(chat => console.log(chat))
-
-        chats.map(async chat => await io.to(user.socket_id).emit('chat', chat))
+        chats.map(chat => io.to(user.socket_id).emit('chat', chat))
     }
 
     socket.on('send-chat', sendMessage)
