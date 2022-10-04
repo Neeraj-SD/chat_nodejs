@@ -19,10 +19,8 @@ const sendNotification = async (message, user) => {
 
         const payload = {
             notification: {
-                android_channel_id: 'santhe_alerts',
                 body: message.body,
-                title: "Custom sound slow_spring_board.mp3",
-                sound: "slow_spring_board"
+                title: user.name,
             }
         }
 
